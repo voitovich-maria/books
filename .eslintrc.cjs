@@ -24,10 +24,10 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'react', 'import', 'react-hooks', 'react-refresh'],
   rules: {
-    'curly': 'warn',
+    'curly': 'error',
     'no-console': 'warn',
-    'no-unused-expressions': 'warn',
-    'import/no-unresolved': 'warn',
+    'no-unused-expressions': 'error',
+    'import/no-unresolved': 'error',
     'import/order': [
       'error',
       {
@@ -43,7 +43,8 @@ module.exports = {
       },
     ],
     'import/prefer-default-export': 'off',
-    'react/jsx-no-useless-fragment': 'warn',
-    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    'jsx-quotes': ['error', 'prefer-double'],
+    'react/jsx-no-useless-fragment': 'error',
+    'react-refresh/only-export-components': ['error', { allowConstantExport: true }],
   },
 };
