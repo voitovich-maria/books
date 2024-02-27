@@ -25,8 +25,8 @@
 - [ ] Используется Modern Redux with Redux Toolkit.
 - [ ] Используются слайсы.
 - [ ] Есть хотя бы одна кастомная мидлвара.
-- [ ] Используется RTK Query.
-- [ ] Используется Transforming Responses.
+- [x] Используется RTK Query.
+- [x] Используется Transforming Responses.
 
 ### Необязательные требования
 

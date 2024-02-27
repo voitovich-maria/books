@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+@font-face {
+  font-display: swap;
+  font-weight: 300;
+  font-family: 'Geometria';
+  font-style: normal;
+  src: url(./assets/fonts/Geometria-light.woff2) format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-weight: 400;
+  font-family: 'Geometria';
+  font-style: normal;
+  src: url(./assets/fonts/Geometria-Regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-weight: 500;
+  font-family: 'Geometria';
+  font-style: normal;
+  src: url(./assets/fonts/Geometria-Medium.woff2) format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-weight: 700;
+  font-family: 'Geometria';
+  font-style: normal;
+  src: url(./assets/fonts/Geometria-Bold.woff2) format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-weight: 900;
+  font-family: 'Geometria';
+  font-style: normal;
+  src: url(./assets/fonts/Geometria-ExtraBold.woff2) format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-weight: 400;
+  font-family: 'Circe';
+  font-style: normal;
+  src: url(./assets/fonts/Circe-Regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-weight: 700;
+  font-family: 'Circe';
+  font-style: normal;
+  src: url(./assets/fonts/Circe-Bold.woff2) format('woff2');
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+::after,
+::before {
+  box-sizing: inherit;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: 'Geometria', 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  color: #222;
+  background-color: #fff;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+a {
+  color: inherit;
+  text-decoration: none
+}
+
+.container {
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 1200px;
+}
+
+.btn {
+  display: inline-block;
+  margin: 0;
+  padding: 10px 15px;
+  border: 0;
+  font: inherit;
+  font-family: 'Circe', 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  vertical-align: middle;
+  text-transform: uppercase;
+  background-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.btn--primary {
+  border: 1px solid #e02d71;
+  color: #fff;
+  background-color: #e02d71;
+}
+
+.btn--primary:not(:disabled):focus,
+.btn--primary:not(:disabled):hover {
+  border: 1px solid #222;
+  background-color: #150c26;
+}
+
+.btn--second {
+  border: 1px solid #222;
+  color: #222;
+  background-color: transparent;
+}
+
+.btn--second:not(:disabled):focus,
+.btn--second:not(:disabled):hover {
+  color: #fff;
+  background-color: #222;
+}
