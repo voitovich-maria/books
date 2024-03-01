@@ -1,10 +1,11 @@
 import { Card } from '../../components/Card';
 import { CardList } from '../../components/CardList';
+import { ErrorMessage } from '../../components/ErrorMessage';
+import { Loader } from '../../components/Loader';
 import { booksApi } from '../../redux/booksApi';
-import './MainPage.css';
 
 export const MainPage = () => {
-  const { data: books } = booksApi.useGetBooksQuery(20);
+  const { data: books, isLoading, isError } = booksApi.useGetBooksQuery();
 
   return (
     <main className="content container">
@@ -15,7 +16,9 @@ export const MainPage = () => {
           )}
         </CardList>
       }
-      {/* TODO: pagination */}
+
+      {isLoading && <Loader />}
+      {isError && <ErrorMessage text="Ошибка при загрузке списка книг" />}
     </main>
   );
 };
