@@ -1,13 +1,11 @@
 import { Header } from './components/Header';
-import { MainPage } from './pages/MainPage';
+import { RootRouter } from './router/RootRouter';
 
-function App() {
+export const App = () => {
   return (
-    <div className="app">
+    <>
       <Header />
-      <MainPage />
-    </div>
+      <RootRouter />
+    </>
   );
 }
-
-export default App;

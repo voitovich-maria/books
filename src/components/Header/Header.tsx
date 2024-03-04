@@ -1,12 +1,13 @@
 import './Header.css';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/img/logo.svg';
 
 export const Header = () => {
   return (
     <header className="header container">
-      <a className="header__logo" href="#">
+      <Link className="header__logo" to={'/'}>
         <img src={logo} alt="Логотип books" />
-      </a>
+      </Link>
 
       <nav className="header__nav">
         <a className="header__link" href="#">Избранное</a>

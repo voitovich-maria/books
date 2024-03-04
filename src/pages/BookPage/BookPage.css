@@ -1,0 +1,49 @@
+.article {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 65px 30px;
+  align-items: flex-start;
+  margin: 0 0 70px;
+}
+
+.article__img {
+  position: relative;
+  display: flex;
+  padding: 75px;
+  background: linear-gradient(to bottom right, #e9e9e9, #fff);
+}
+
+.article__img img {
+  margin: auto;
+}
+
+.article__img .like-btn {
+  padding: 20px;
+}
+
+.article__img .like-btn svg {
+  width: 48px;
+  height: 48px;
+}
+
+.article__authors {
+  margin: 0 0 20px;
+  font-size: 20px;
+  color: #9d9d9d;
+}
+
+.article__title {
+  margin: 0 0 40px;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.article__descr {
+  margin: 0 0 40px;
+}
+
+.article__publisher,
+.article__date {
+  margin: 0 0 20px;
+  color: #9d9d9d;
+}
