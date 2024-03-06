@@ -46,5 +46,6 @@ module.exports = {
     'jsx-quotes': ['error', 'prefer-double'],
     'react/jsx-no-useless-fragment': 'error',
     'react-refresh/only-export-components': ['error', { allowConstantExport: true }],
+    "@typescript-eslint/no-misused-promises": ['error', { checksVoidReturn: false }]
   },
 };

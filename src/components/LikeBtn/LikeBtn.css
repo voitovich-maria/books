@@ -17,6 +17,7 @@
   transform: scale(1.2);
 }
 
-.like-btn:hover svg path {
+.like-btn:hover svg path,
+.like-btn.active svg path {
   fill: #e02d71;
 }
