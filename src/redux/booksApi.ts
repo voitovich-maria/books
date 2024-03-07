@@ -21,7 +21,7 @@ interface BookDetailsData {
     authors: string[];
     title: string;
     imageLinks: {
-      small: string;
+      thumbnail: string;
     };
     publisher: string;
     publishedDate: string;
@@ -63,13 +63,7 @@ export const booksApi = createApi({
       }))
     }),
 
-    /**
-     * Если убрать | undefined (и оставить только string),
-     * то возникают проблемы при вызове useGetBooksDetailsQuery(bookId)
-     * в компоненте BookPage.
-     * Может есть способы как-то по-другому это победить?
-     */
-    getBooksDetails: builder.query<BookDetails, string | undefined>({
+    getBookDetails: builder.query<BookDetails, string | undefined>({
       query: (bookId) => ({
         url: `volumes/${bookId}`,
         params: {
@@ -80,7 +74,7 @@ export const booksApi = createApi({
         id: item.id,
         title: item.volumeInfo.title,
         authors: item.volumeInfo.authors.join(', '),
-        image: item.volumeInfo.imageLinks.small,
+        image: item.volumeInfo.imageLinks.thumbnail,
         publisher: item.volumeInfo.publisher,
         publishedDate: item.volumeInfo.publishedDate,
         description: item.volumeInfo.description,

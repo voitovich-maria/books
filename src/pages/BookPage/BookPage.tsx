@@ -1,22 +1,24 @@
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { ErrorMessage } from '../../components/ErrorMessage';
 import { LikeBtn } from '../../components/LikeBtn';
 import { Loader } from '../../components/Loader';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { booksApi } from '../../redux/booksApi';
 import './BookPage.css';
 
 export const BookPage = () => {
   const { bookId } = useParams();
-  const { data: book, isLoading, isError } = booksApi.useGetBooksDetailsQuery(bookId);
+  const { data: book, isLoading, isError } = booksApi.useGetBookDetailsQuery(bookId);
+  const currentUser = useContext(CurrentUserContext)
 
   return (
     <main className="content container">
-      {/* Можно оставить этот компонент смешанным - немножко умным? Или лучше вынести глупый article? */}
       {book &&
         <article className="article">
           <div className="article__img">
             <img src={book.image} alt={book.title} />
-            <LikeBtn />
+            {currentUser && <LikeBtn bookId={book.id} />}
           </div>
 
           <div className="article__text">

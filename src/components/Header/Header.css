@@ -19,6 +19,18 @@
 }
 
 .header__link:focus,
-.header__link:hover {
+.header__link:hover,
+.header__link.active {
   border-color: #e02d71;
+}
+
+.header__btn.btn {
+  border: 1px solid #222;
+  color: #222;
+  background-color: transparent;
+}
+
+.header__btn:not(:disabled):active {
+  color: #fff;
+  background-color: #222;
 }
