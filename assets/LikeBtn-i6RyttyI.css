@@ -1,0 +1,1 @@
+.like-btn{position:absolute;z-index:1;top:0;right:0;padding:10px}.like-btn svg{width:32px;height:32px;vertical-align:middle;transition:all .2s ease}.like-btn:active svg{transform:scale(1.2)}.like-btn:hover svg path,.like-btn.active svg path{fill:#e02d71}
