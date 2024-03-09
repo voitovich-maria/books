@@ -1,4 +1,4 @@
-import { User, UserDetails } from '../redux/userSlice';
+import type { User, HistoryItem, UserDetails } from '../redux/userSlice';
 
 export const isUser = (value: unknown): value is User => {
   return (
@@ -11,6 +11,17 @@ export const isUser = (value: unknown): value is User => {
   );
 };
 
+const isHistoryItem = (value: unknown): value is HistoryItem => {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    'id' in value &&
+    'bookQuery' in value &&
+    typeof value.id === 'string' &&
+    typeof value.bookQuery === 'string'
+  );
+};
+
 export const isUserDetails = (value: unknown): value is UserDetails => {
   return (
     isUser(value) &&
@@ -19,6 +30,6 @@ export const isUserDetails = (value: unknown): value is UserDetails => {
     Array.isArray(value.favorites) &&
     Array.isArray(value.history) &&
     value.favorites.every((item) => typeof item === 'string') &&
-    value.history.every((item) => typeof item === 'string')
+    value.history.every((item) => isHistoryItem(item))
   );
 };

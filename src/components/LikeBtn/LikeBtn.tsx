@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAppDispatch, useFavoritesSelector } from '../../hooks/reduxHooks';
-import { addToFavorites, removeFromFavorites } from '../../redux/userSlice';
+import { addedToFavorites, removedFromFavorites } from '../../redux/userSlice';
 import './LikeBtn.css';
 
 interface Props {
@@ -13,7 +13,7 @@ export const LikeBtn = ({ bookId }: Props) => {
 
   const dispatch = useAppDispatch();
   const handleClick = () => {
-    dispatch(isActive ? removeFromFavorites(bookId) : addToFavorites(bookId));
+    dispatch(isActive ? removedFromFavorites(bookId) : addedToFavorites(bookId));
     setIsActive(!isActive);
   }
 

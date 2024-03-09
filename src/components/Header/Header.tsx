@@ -1,16 +1,15 @@
 import './Header.css';
 import 'tippy.js/dist/tippy.css';
 import Tippy from '@tippyjs/react';
-import { useContext } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/img/logo.svg';
-import { CurrentUserContext } from '../../context/CurrentUserContext';
-import { useAppDispatch } from '../../hooks/reduxHooks';
+import { useAppDispatch, useCurrentUserSelector } from '../../hooks/reduxHooks';
 import { signOut } from '../../redux/userSlice';
+import { SearchForm } from '../SearchForm';
 
 export const Header = () => {
   const location = useLocation();
-  const currentUser = useContext(CurrentUserContext);
+  const currentUser = useCurrentUserSelector();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -25,6 +24,8 @@ export const Header = () => {
         <img src={logo} alt="Логотип books" />
       </Link>
 
+      {location.pathname !== '/signup' && location.pathname !== '/signin' && <SearchForm />}
+
       <nav className="header__nav">
         {currentUser
           ? <>
@@ -35,8 +36,8 @@ export const Header = () => {
             </Tippy>
           </>
           : location.pathname === '/signin'
-            ? <Link className="btn btn--primary" to={'/signup'}>Зарегистрироваться</Link>
-            : <Link className="btn btn--primary" to={'/signin'}>Войти</Link>
+            ? <Link className="btn btn--second" to={'/signup'}>Зарегистрироваться</Link>
+            : <Link className="btn btn--second" to={'/signin'}>Войти</Link>
         }
       </nav>
     </header>

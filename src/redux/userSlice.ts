@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { nanoid } from 'nanoid';
 import { getUser, init } from '../utils/localStorageUtils';
 
 export interface User {
@@ -6,9 +7,14 @@ export interface User {
   password: string;
 }
 
+export interface HistoryItem {
+  id: string;
+  bookQuery: string;
+}
+
 export interface UserDetails extends User {
   favorites: string[];
-  history: string[];
+  history: HistoryItem[];
 }
 
 const initialState: UserDetails = init();
@@ -34,14 +40,28 @@ export const userSlice = createSlice({
       state.favorites = [];
       state.history = [];
     },
-    addToFavorites: (state, action: PayloadAction<string>) => {
+    addedToFavorites: (state, action: PayloadAction<string>) => {
       state.favorites.push(action.payload);
     },
-    removeFromFavorites: (state, action: PayloadAction<string>) => {
+    removedFromFavorites: (state, action: PayloadAction<string>) => {
       state.favorites = state.favorites.filter((item) => item !== action.payload);
+    },
+    addedToHistory: (state, action: PayloadAction<string>) => {
+      state.history.push({ id: nanoid(), bookQuery: action.payload });
+    },
+    removedFromHistory: (state, action: PayloadAction<string>) => {
+      state.history = state.history.filter((item) => item.id !== action.payload);
     }
   }
 });
 
 export const userReducer = userSlice.reducer;
-export const { signUp, signIn, signOut, addToFavorites, removeFromFavorites } = userSlice.actions;
+export const {
+  signUp,
+  signIn,
+  signOut,
+  addedToFavorites,
+  removedFromFavorites,
+  addedToHistory,
+  removedFromHistory
+} = userSlice.actions;

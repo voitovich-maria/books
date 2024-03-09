@@ -1,23 +1,23 @@
-import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import defaultImage from '../../assets/img/book.svg';
 import { ErrorMessage } from '../../components/ErrorMessage';
 import { LikeBtn } from '../../components/LikeBtn';
 import { Loader } from '../../components/Loader';
-import { CurrentUserContext } from '../../context/CurrentUserContext';
+import { useCurrentUserSelector } from '../../hooks/reduxHooks';
 import { booksApi } from '../../redux/booksApi';
 import './BookPage.css';
 
 export const BookPage = () => {
   const { bookId } = useParams();
   const { data: book, isLoading, isError } = booksApi.useGetBookDetailsQuery(bookId);
-  const currentUser = useContext(CurrentUserContext)
+  const currentUser = useCurrentUserSelector();
 
   return (
     <main className="content container">
       {book &&
         <article className="article">
           <div className="article__img">
-            <img src={book.image} alt={book.title} />
+            <img src={book.image || defaultImage} alt={book.title} />
             {currentUser && <LikeBtn bookId={book.id} />}
           </div>
 
