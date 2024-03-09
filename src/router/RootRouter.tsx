@@ -10,6 +10,7 @@ const SignIn = lazy(() => import('../pages/SignIn').then(module => ({ default: m
 const SignUp = lazy(() => import('../pages/SignUp').then(module => ({ default: module.SignUp })));
 const FavoritesPage = lazy(() => import('../pages/FavoritesPage').then(module => ({ default: module.FavoritesPage })));
 const HistoryPage = lazy(() => import('../pages/HistoryPage').then(module => ({ default: module.HistoryPage })));
+const SearchPage = lazy(() => import('../pages/SearchPage').then(module => ({ default: module.SearchPage })));
 
 
 export const RootRouter = () => {
@@ -23,6 +24,7 @@ export const RootRouter = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/history" element={<HistoryPage />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route path="/*" element={<ErrorMessage text="Страница не найдена" />} />
         </Routes>
       </Suspense>

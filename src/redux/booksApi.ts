@@ -29,6 +29,11 @@ interface BookDetailsData {
   };
 }
 
+interface BookQuery {
+  bookQuery: string,
+  limit: number;
+}
+
 export interface Book {
   id: string,
   title: string,
@@ -46,20 +51,19 @@ export const booksApi = createApi({
   reducerPath: 'booksApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://www.googleapis.com/books/v1/' }),
   endpoints: (builder) => ({
-    getBooks: builder.query<Book[], void>({
-      query: () => ({
-        url: 'volumes?q=subject:fiction',
+    getBooks: builder.query<Book[], BookQuery>({
+      query: ({ bookQuery, limit }) => ({
+        url: `volumes?q=${bookQuery ? 'intitle:' + bookQuery : 'subject:fiction&&langRestrict=ru'}`,
         params: {
-          langRestrict: 'ru',
           projection: 'lite',
-          maxResults: 20,
+          maxResults: limit,
         }
       }),
       transformResponse: ({ items }: BooksData) => items.map((item) => ({
         id: item.id,
         title: item.volumeInfo.title,
-        authors: item.volumeInfo.authors.join(', '),
-        image: item.volumeInfo.imageLinks.thumbnail,
+        authors: item.volumeInfo.authors?.join(', '),
+        image: item.volumeInfo.imageLinks?.thumbnail,
       }))
     }),
 
@@ -73,8 +77,8 @@ export const booksApi = createApi({
       transformResponse: (item: BookDetailsData) => ({
         id: item.id,
         title: item.volumeInfo.title,
-        authors: item.volumeInfo.authors.join(', '),
-        image: item.volumeInfo.imageLinks.thumbnail,
+        authors: item.volumeInfo.authors?.join(', '),
+        image: item.volumeInfo.imageLinks?.thumbnail,
         publisher: item.volumeInfo.publisher,
         publishedDate: item.volumeInfo.publishedDate,
         description: item.volumeInfo.description,

@@ -1,15 +1,16 @@
+import { useSearchParams } from 'react-router-dom';
 import { Header } from './components/Header';
-import { CurrentUserContext } from './context/CurrentUserContext';
-import { useCurrentUserSelector } from './hooks/reduxHooks';
+import { BookQueryContext } from './context/BookQueryContext';
 import { RootRouter } from './router/RootRouter';
 
 export const App = () => {
-  const currentUser = useCurrentUserSelector()
+  const [searchParams] = useSearchParams();
+  const bookQuery = searchParams.get('q') ?? '';
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <BookQueryContext.Provider value={bookQuery}>
       <Header />
       <RootRouter />
-    </CurrentUserContext.Provider>
+    </BookQueryContext.Provider>
   );
 }

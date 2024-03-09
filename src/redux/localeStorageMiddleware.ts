@@ -1,7 +1,15 @@
 import { createListenerMiddleware, isAnyOf } from '@reduxjs/toolkit';
 import { setUser, setCurrentUser, removeCurrentUser } from '../utils/localStorageUtils';
 import { AppDispatch, RootState } from './store';
-import { signUp, signIn, signOut, addToFavorites, removeFromFavorites } from './userSlice';
+import {
+  signUp,
+  signIn,
+  signOut,
+  addedToFavorites,
+  removedFromFavorites,
+  addedToHistory,
+  removedFromHistory
+} from './userSlice';
 
 export const localStorageMiddleware = createListenerMiddleware();
 
@@ -30,7 +38,7 @@ startAppListening({
 });
 
 startAppListening({
-  matcher: isAnyOf(addToFavorites, removeFromFavorites),
+  matcher: isAnyOf(addedToFavorites, removedFromFavorites, addedToHistory, removedFromHistory),
   effect: (_, api) => {
     setUser(api.getState().userReducer);
   },

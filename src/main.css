@@ -93,6 +93,11 @@ a {
   text-decoration: none
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 .container {
   margin: 0 auto;
   padding-left: 15px;
