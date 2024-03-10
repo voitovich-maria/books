@@ -1,13 +1,13 @@
-import { useContext } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Card } from '../../components/Card';
 import { CardList } from '../../components/CardList';
 import { ErrorMessage } from '../../components/ErrorMessage';
 import { Loader } from '../../components/Loader';
-import { BookQueryContext } from '../../context/BookQueryContext';
 import { booksApi } from '../../redux/booksApi';
 
 export const SearchPage = () => {
-  const bookQuery = useContext(BookQueryContext);
+  const [searchParams] = useSearchParams();
+  const bookQuery = searchParams.get('q') ?? '';
   const { data: books, isLoading, isError } = booksApi.useGetBooksQuery({ bookQuery, limit: 20 });
 
   return (

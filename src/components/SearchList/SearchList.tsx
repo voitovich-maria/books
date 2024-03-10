@@ -13,7 +13,7 @@ export const SearchList = ({ bookQuery }: Props) => {
     <ul className="search__list">
       {books && !isError && books.map((book) =>
         <li key={book.id}>
-          <Link className="search__link" to={`/book/${book.id}`}>{book.title}</Link>
+          <Link className="search__link" to={`/${book.id}`}>{book.title}</Link>
         </li>
       )}
     </ul>
