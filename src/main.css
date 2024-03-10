@@ -142,7 +142,7 @@ ul {
 .btn--second {
   border: 1px solid #222;
   color: #222;
-  background-color: transparent;
+  background-color: #fff;
 }
 
 .btn--second:not(:disabled):focus,
