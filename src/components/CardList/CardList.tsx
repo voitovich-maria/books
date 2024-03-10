@@ -1,7 +1,7 @@
 import './CardList.css';
 
 interface Props {
-  children: JSX.Element;
+  children: JSX.Element[];
 }
 
 export const CardList = ({ children }: Props) => {
