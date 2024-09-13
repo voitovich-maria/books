@@ -2,7 +2,7 @@
 
 https://voitovich-maria.github.io/books
 
-Осуществляет поиск книг по названию, добавление в избранное и сохранение истории поиска. Для последних двух опций необходима регистрация.
+Осуществляет поиск книг по названию, добавление в избранное и сохранение истории поиска. Для последних двух опций необходима регистрация (можно использовать выдуманные логин/пароль).
 
 Приложение использует [Google Books API](https://developers.google.com/books)
 
@@ -13,10 +13,10 @@ https://voitovich-maria.github.io/books
 - tippyjs - для реализации tooltip;
 - react-spinners - предоставляет коллекцию прелоадеров.
 
-### Обязательные требования
+### Требования
 
-- [x] Реализованы Требования к функциональности.
-- [x] Для хранения учетных записей пользователей, их Избранного и Истории поиска, используется LocalStorage.
+- [x] Реализованы страницы: главная, просмотр информации о книги, избранное, история поиска, вход и регистрация.
+- [x] Для хранения учетных записей пользователей, их избранного и истории поиска, используется LocalStorage.
 
 #### React
 
@@ -41,6 +41,6 @@ https://voitovich-maria.github.io/books
 - [x] Используется RTK Query: [booksApi](https://github.com/voitovich-maria/books/blob/main/src/redux/booksApi.ts)
 - [x] Используется Transforming Responses: [booksApi](https://github.com/voitovich-maria/books/blob/main/src/redux/booksApi.ts)
 
-### Необязательные требования
+### TypeScript
 
 - [x] Используется TypeScript.
